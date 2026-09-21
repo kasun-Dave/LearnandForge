@@ -1,6 +1,9 @@
 # build output (Vercel rebuilds it)
 dist/
 
+# private exam answer keys — only the hashed exam.json is committed
+*.answers.json
+
 # local
 node_modules/
 .vercel/
