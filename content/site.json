@@ -1,0 +1,173 @@
+{
+  "site": {
+    "name": "LearnandForge",
+    "tagline": "Learn the trade. Build the business.",
+    "description": "Sinhala-first, practical courses on the trades Sri Lankans build businesses on — apparel, plantation, food, crafts, retail and more. Quizzes, templates and real suppliers in every course.",
+    "url": "https://learnandforge.vercel.app",
+    "repo": "https://github.com/kasun-Dave/LearnandForge",
+    "year": 2026
+  },
+  "categories": [
+    {
+      "slug": "textiles-apparel",
+      "name": "Textiles & Apparel",
+      "si": "ඇඟලුම් සහ රෙදිපිළි",
+      "icon": "textile",
+      "tagline": "Knitting, weaving, garments, handloom, batik",
+      "description": "Sri Lanka's biggest export trade, scaled down to a business you can start: knit fabrics and T‑shirt brands, handloom weaving, batik and small garment units — with the same spec sheets, lot tests and quality checks the export factories use.",
+      "planned": [
+        "Handloom weaving as a business",
+        "Batik studio: from wax to wholesale",
+        "Small garment unit: setup, machines and costing"
+      ]
+    },
+    {
+      "slug": "agriculture-plantation",
+      "name": "Agriculture & Plantation",
+      "si": "කෘෂිකර්මය සහ වැවිලි",
+      "icon": "leaf",
+      "tagline": "Tea, spices, coconut, market gardening",
+      "description": "From a smallholding to a brand: tea, cinnamon and pepper, coconut products, vegetables and fruit for local buyers and export graders.",
+      "planned": [
+        "Cinnamon smallholding to export grade",
+        "Home garden to market: vegetables at scale",
+        "Coconut products: oil, coir and desiccated"
+      ]
+    },
+    {
+      "slug": "food-beverage",
+      "name": "Food & Beverage",
+      "si": "ආහාර සහ පාන",
+      "icon": "food",
+      "tagline": "Bakery, spice blends, catering, packaged foods",
+      "description": "Turning a kitchen skill into a registered food business: costing, food safety, labeling, packaging and selling to shops and online.",
+      "planned": [
+        "Home bakery to registered food business",
+        "Spice blends: sourcing, packing and labeling",
+        "Small catering: menus, costing and food safety"
+      ]
+    },
+    {
+      "slug": "handicrafts-manufacturing",
+      "name": "Handicrafts & Small Manufacturing",
+      "si": "හස්ත කර්මාන්ත සහ කුඩා නිෂ්පාදන",
+      "icon": "craft",
+      "tagline": "Wood, brass, coir, pottery, reed",
+      "description": "Craft skills priced and produced for real buyers — tourists, exporters and online shops — without losing what makes them handmade.",
+      "planned": [
+        "Coir and rush products for export buyers",
+        "Pottery studio economics",
+        "Wood and brass craft: pricing for tourists and online"
+      ]
+    },
+    {
+      "slug": "retail-ecommerce",
+      "name": "Retail & E‑commerce",
+      "si": "සිල්ලර සහ අන්තර්ජාල වෙළඳාම",
+      "icon": "shop",
+      "tagline": "Shops, Daraz, Instagram, WhatsApp selling",
+      "description": "Where and how Sri Lankans actually buy: village shop to modern retail, marketplace selling, and running a brand on Instagram and WhatsApp.",
+      "planned": [
+        "Selling on Instagram and WhatsApp in Sri Lanka",
+        "Daraz seller basics",
+        "Village shop to modern retail"
+      ]
+    },
+    {
+      "slug": "services-digital",
+      "name": "Services & Digital",
+      "si": "සේවා සහ ඩිජිටල්",
+      "icon": "laptop",
+      "tagline": "Tourism, tuition, repair, freelancing",
+      "description": "Service businesses that start with one person and a skill: homestays, tuition classes, repair shops and freelancing for clients abroad.",
+      "planned": [
+        "Homestay and small tourism business",
+        "Freelancing from Sri Lanka: clients, contracts, getting paid",
+        "Tuition class to learning centre"
+      ]
+    },
+    {
+      "slug": "business-foundations",
+      "name": "Business Foundations",
+      "si": "ව්‍යාපාර මූලික කරුණු",
+      "icon": "compass",
+      "tagline": "Registration, pricing, money, marketing",
+      "description": "The parts every trade shares: registering the business, pricing and costing, keeping the books, and finding the first hundred customers.",
+      "planned": [
+        "Registering a business in Sri Lanka",
+        "Pricing and costing for makers",
+        "Bookkeeping for a one‑person business"
+      ]
+    }
+  ],
+  "courses": [
+    {
+      "slug": "knit-tshirt-brand",
+      "status": "available",
+      "title_si": "නූලෙන් බ්‍රෑන්ඩයට",
+      "title_en": "From Yarn to Brand",
+      "subtitle_en": "Knit fabrics, T‑shirt design, printing, testing and sourcing in Sri Lanka — for a premium clothing brand",
+      "category": "textiles-apparel",
+      "language": "Sinhala, with industry terms in English",
+      "level": "Beginner — no prior knowledge needed",
+      "hours": "12–15 hours",
+      "modules_count": 9,
+      "quiz_count": 10,
+      "question_count": 60,
+      "price": "Free",
+      "summary": "A self-study course for someone entering the clothing trade who wants to build a premium T‑shirt brand that lasts. It starts with how Sri Lanka's export garment industry really works, then works through fibres and yarn, knit fabrics, lab testing to export standards, design and tech packs, screen printing and inks, production and AQL quality control, sourcing from Sri Lankan mills, factories and labs, and finally pricing, registration and a 90‑day launch plan.",
+      "why": "Export factories in Sri Lanka make world-class T‑shirts because of a process — nominated fabric, nominated inks, testing on every lot, sealed samples and final inspection — not because of a secret product. This course teaches that process at a size a new brand can afford.",
+      "outcomes": [
+        "Read and write a fabric spec sheet: composition, yarn count, GSM, finishes, shrinkage and colourfastness targets",
+        "Choose the right knit (single jersey, interlock, pique, rib) and weight for each garment",
+        "Test fabric and garments — at home and at SGS, Intertek or Bureau Veritas — and read the report",
+        "Build a size chart and tech pack a factory can produce from without you in the room",
+        "Judge a print house: inks, curing, stretch and wash tests, common defects",
+        "Cost a T‑shirt, plan a production run and run an AQL 2.5 final inspection",
+        "Source fabric, trims, printing and factories in Sri Lanka, and negotiate around MOQs",
+        "Register the business, protect the brand name and launch in 90 days"
+      ],
+      "audience": [
+        "Someone starting a clothing brand in Sri Lanka who wants quality over volume",
+        "Anyone who has a friend or relative in a garment factory and wants to understand what they do",
+        "Small print shops and CMT units that want to serve premium customers"
+      ],
+      "requirements": [
+        "Reads Sinhala; comfortable with English technical terms in brackets",
+        "A few T‑shirts and fabric swatches to practise on",
+        "Time for the field exercises: Pettah, a factory visit, a print house, a lab quotation"
+      ],
+      "includes": [
+        "9 modules, each with Sri Lanka examples and a practical exercise",
+        "10 self-marking quizzes — 60 questions — with explanations for every answer",
+        "A 15-question final exam",
+        "6 copy‑paste templates: fabric spec sheet, lot acceptance sheet, PP checklist, AQL inspection sheet, supplier comparison, complaint log",
+        "A glossary of 60+ industry terms and a library of 150+ verified links to institutes, labs, mills, standards and suppliers"
+      ],
+      "modules": [
+        { "n": 1, "si": "ඇඟලුම් කර්මාන්තය ක්‍රියාත්මක වන හැටි", "en": "How the apparel industry works", "hours": "1.5 h" },
+        { "n": 2, "si": "තන්තු සහ නූල්", "en": "Fibres and yarn", "hours": "1.5 h" },
+        { "n": 3, "si": "ගෙතුම් රෙදි", "en": "Knit fabrics", "hours": "2 h" },
+        { "n": 4, "si": "රෙදි සහ ඇඟලුම් පරීක්ෂාව", "en": "Fabric and garment testing", "hours": "2 h" },
+        { "n": 5, "si": "සැලසුම සහ ටෙක් පැක්", "en": "Design and the tech pack", "hours": "2 h" },
+        { "n": 6, "si": "මුද්‍රණය සහ අලංකරණය", "en": "Printing and decoration", "hours": "2 h" },
+        { "n": 7, "si": "නිෂ්පාදනය සහ තත්ත්ව පාලනය", "en": "Production and quality control", "hours": "2 h" },
+        { "n": 8, "si": "ශ්‍රී ලංකාවේ මිලදී ගැනීම", "en": "Sourcing in Sri Lanka", "hours": "1.5 h" },
+        { "n": 9, "si": "ප්‍රිමියම් බ්‍රෑන්ඩය ගොඩනැගීම", "en": "Building the premium brand", "hours": "1.5 h" }
+      ],
+      "extras": [
+        "අවසන් විභාගය — Final exam (15 questions)",
+        "පාරිභාෂික වචන මාලාව — Glossary",
+        "ආකෘති සහ චෙක්ලිස්ට් — Templates and checklists",
+        "සම්පත් පුස්තකාලය — Resource library"
+      ],
+      "content": {
+        "html": "content/courses/knit-tshirt-brand/content.html",
+        "css": "/assets/course.css",
+        "runtime": "/assets/course-runtime.js",
+        "fonts": "Noto+Serif+Sinhala:wght@600;700&family=IBM+Plex+Mono:wght@400;500"
+      },
+      "updated": "2026-09-21"
+    }
+  ]
+}
