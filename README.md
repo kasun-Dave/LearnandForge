@@ -59,6 +59,7 @@ Planned (not yet written) courses are listed per category under `planned` in `si
 | Course | Category | Language | Status |
 | --- | --- | --- | --- |
 | නූලෙන් බ්‍රෑන්ඩයට — From Yarn to Brand (knit fabrics, T‑shirts, testing, printing, sourcing in Sri Lanka) | Textiles & Apparel | Sinhala | Available |
+| ගමනෙන් ව්‍යාපාරයට — From Journey to Business (tour guiding, homestays, experiences, itineraries, pricing and bookings in Sri Lanka) | Services & Digital | Sinhala | Available |
 
 ## Notes
 
