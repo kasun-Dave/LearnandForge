@@ -161,6 +161,7 @@
         "ආකෘති සහ චෙක්ලිස්ට් — Templates and checklists",
         "සම්පත් පුස්තකාලය — Resource library"
       ],
+      "exam": "content/courses/knit-tshirt-brand/exam.json",
       "content": {
         "html": "content/courses/knit-tshirt-brand/content.html",
         "css": "/assets/course.css",
