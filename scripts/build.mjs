@@ -31,6 +31,22 @@ try {
 fs.mkdirSync(DIST, { recursive: true });
 copyDir(path.join(ROOT, 'public'), DIST);
 
+/* ---------- exams (public, hashed) ---------- */
+const exams = {};
+for (const course of data.courses) {
+  if (!course.exam) continue;
+  const file = path.join(ROOT, course.exam);
+  if (!fs.existsSync(file)) fail(`Course "${course.slug}": exam file not found: ${course.exam} (run scripts/hash-exam.mjs)`);
+  const exam = JSON.parse(fs.readFileSync(file, 'utf8'));
+  if (exam.slug !== course.slug) fail(`Exam slug "${exam.slug}" does not match course "${course.slug}"`);
+  for (const q of exam.questions) {
+    if (!/^[0-9a-f]{64}$/.test(q.h || '')) fail(`Exam ${course.slug}: question ${q.id} has no hash — the public exam.json must be generated with scripts/hash-exam.mjs`);
+    if ('answer' in q || 'why' in q) fail(`Exam ${course.slug}: question ${q.id} still contains an answer — never ship exam.answers.json content`);
+  }
+  exams[course.slug] = exam;
+  course.examMeta = { count: exam.questions.length, minutes: exam.minutes, pass: exam.pass_percent };
+}
+
 /* ---------- pages ---------- */
 const pages = [];
 write('/', T.homePage(data));
@@ -42,6 +58,7 @@ for (const course of data.courses) {
   write(`/courses/${course.slug}/`, T.coursePage(data, course));
   const html = fs.readFileSync(path.join(ROOT, course.content.html), 'utf8');
   write(`/courses/${course.slug}/learn/`, T.learnPage(data, course, html));
+  if (exams[course.slug]) write(`/courses/${course.slug}/exam/`, T.examPage(data, course, exams[course.slug]));
 }
 write('/about/', T.aboutPage(data));
 fs.writeFileSync(path.join(DIST, '404.html'), T.notFoundPage(data));

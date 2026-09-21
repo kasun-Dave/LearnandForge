@@ -266,7 +266,7 @@ export function homePage({ site, categories, courses }) {
       <div class="lf-featured__panel">
         <h4>Modules</h4>
         <ul class="lf-mods">${featured.modules.slice(0, 5).map((m) => `<li><span class="n">${String(m.n).padStart(2, '0')}</span><span class="si">${esc(m.si)}<span class="en">${esc(m.en)}</span></span><span class="h">${esc(m.hours)}</span></li>`).join('')}</ul>
-        <p class="lf-featured__more">+ ${featured.modules.length - 5} more modules, a final exam, glossary, templates and a link library.</p>
+        <p class="lf-featured__more">+ ${featured.modules.length - 5} more modules, a final exam, glossary, templates and a link library${featured.examMeta ? `, plus a ${featured.examMeta.count}-question <a href="/courses/${featured.slug}/exam/" style="color:#fff">expert exam</a>` : ''}.</p>
       </div>
     </div>
   </div>
@@ -421,6 +421,7 @@ export function coursePage({ site, categories }, course) {
       <div class="lf-enroll__price">${esc(course.price)}</div>
       <p class="lf-enroll__note">No account needed. Quiz progress is saved in this browser only.</p>
       <a class="lf-btn lf-btn--yellow" href="/courses/${course.slug}/learn/">${icons.play} Start the course</a>
+      ${course.examMeta ? `<a class="lf-btn lf-btn--ghost" style="margin-top:10px" href="/courses/${course.slug}/exam/">Expert exam · විශේෂඥ විභාගය</a>` : ''}
       <dl>
         <dt>Language</dt><dd>${esc(course.language)}</dd>
         <dt>Level</dt><dd>${esc(course.level)}</dd>
@@ -448,6 +449,7 @@ export function coursePage({ site, categories }, course) {
     <div class="lf-aside__card"><h3>Who it is for</h3><ul>${course.audience.map((a) => `<li>${esc(a)}</li>`).join('')}</ul></div>
     <div class="lf-aside__card"><h3>What you need</h3><ul>${course.requirements.map((a) => `<li>${esc(a)}</li>`).join('')}</ul></div>
     <div class="lf-aside__card"><h3>Included</h3><ul>${course.includes.map((a) => `<li>${esc(a)}</li>`).join('')}</ul></div>
+    ${course.examMeta ? `<div class="lf-aside__card"><h3>Expert exam · විශේෂඥ විභාගය</h3><p>${course.examMeta.count} expert-level questions — single and multi-select, calculations, matching and ordering — ${course.examMeta.minutes} minutes, ${course.examMeta.pass}% to pass. Score only; answers are never shown. <a href="/courses/${course.slug}/exam/">Take the exam →</a></p></div>` : ''}
     <div class="lf-aside__card"><h3>Category</h3><p><a href="/categories/${cat.slug}/">${esc(cat.name)}</a> · <span class="lf-si">${esc(cat.si)}</span></p></div>
   </div>
 </div></section>`;
@@ -459,7 +461,7 @@ export function learnPage({ site, categories }, course, contentHtml) {
   const body = `
 <div class="lf-learnbar"><div class="lf-wrap lf-learnbar__inner">
   ${crumbs([['/courses/', 'Courses'], [`/categories/${cat.slug}/`, cat.name], [`/courses/${course.slug}/`, course.title_en], [null, 'Reader']])}
-  <a class="lf-btn lf-btn--ghost lf-btn--sm" href="/courses/${course.slug}/">Course overview</a>
+  <span style="display:flex;gap:8px;flex-wrap:wrap"><a class="lf-btn lf-btn--ghost lf-btn--sm" href="/courses/${course.slug}/">Course overview</a>${course.examMeta ? `<a class="lf-btn lf-btn--yellow lf-btn--sm" href="/courses/${course.slug}/exam/">Expert exam</a>` : ''}</span>
 </div></div>
 <div class="course-root" lang="si" data-course="${course.slug}">
 ${contentHtml}
@@ -471,6 +473,101 @@ ${contentHtml}
     description: course.summary.slice(0, 200),
     body, extraFonts: course.content.fonts, bodyClass: 'lf-learn',
     extraHead: `<link rel="stylesheet" href="${course.content.css}">`,
+  });
+}
+
+/* ---------- expert exam ---------- */
+const TYPE_LABEL = {
+  single: 'එක් පිළිතුරක්',
+  multi: 'නිවැරදි සියල්ල තෝරන්න',
+  numeric: 'අංකයක් ලියන්න',
+  match: 'ගලපන්න',
+  order: 'පිළිවෙළට සකසන්න',
+};
+const letter = (i) => String.fromCharCode(97 + i);
+
+function examQuestion(q, n) {
+  let body = '';
+  if (q.type === 'single' || q.type === 'multi') {
+    const kind = q.type === 'single' ? 'radio' : 'checkbox';
+    body = `<div class="lfx-opts">${q.options.map((o, i) => `<label><input type="${kind}" name="${q.id}" value="${letter(i)}"><span><b>${letter(i)}.</b> ${o}</span></label>`).join('')}</div>`;
+  } else if (q.type === 'numeric') {
+    body = `<label class="lf-sr" for="${q.id}">පිළිතුර</label><input class="lfx-num-input" id="${q.id}" name="${q.id}" type="text" inputmode="decimal" autocomplete="off" placeholder="${q.decimals ? 'උදා: 4.0' : 'උදා: 120'}">`;
+  } else if (q.type === 'match') {
+    const opts = q.right.map((_, i) => `<option value="${letter(i)}">${letter(i)}</option>`).join('');
+    body = `<div class="lfx-pairs">${q.left.map((l, i) => `<div class="lfx-pair"><span>${i + 1}. ${l}</span><select name="${q.id}__${i + 1}" aria-label="${i + 1} සඳහා ගැලපීම"><option value="">— තෝරන්න —</option>${opts}</select></div>`).join('')}</div>
+    <ol class="lfx-right">${q.right.map((r, i) => `<li><b>${letter(i)}.</b> ${r}</li>`).join('')}</ol>`;
+  } else if (q.type === 'order') {
+    const opts = q.items.map((_, i) => `<option value="${i + 1}">${i + 1}</option>`).join('');
+    body = `<div class="lfx-pairs">${q.items.map((it, i) => `<div class="lfx-pair order"><select name="${q.id}__${letter(i)}" aria-label="${it} සඳහා පිළිවෙළ අංකය"><option value="">—</option>${opts}</select><span><b>${letter(i)}.</b> ${it}</span></div>`).join('')}</div>`;
+  }
+  return `<article class="lfx-q" id="${q.id}" data-type="${q.type}" data-m="${q.m}">
+  <header><span class="lfx-num">${String(n).padStart(2, '0')}</span><span class="lfx-type">${TYPE_LABEL[q.type]}</span><span class="lfx-mod">මොඩියුලය ${q.m}</span></header>
+  <p class="lfx-text">${q.text}</p>
+  ${body}
+</article>`;
+}
+
+export function examPage({ site, categories }, course, exam) {
+  const cat = categories.find((c) => c.slug === course.category);
+  const counts = exam.questions.reduce((a, q) => ((a[q.type] = (a[q.type] || 0) + 1), a), {});
+  const passCount = Math.ceil(exam.questions.length * exam.pass_percent / 100);
+  const data = exam.questions.map((q) => ({ id: q.id, type: q.type, m: q.m, h: q.h, decimals: q.decimals || 0 }));
+  const body = `
+<section class="lfx" lang="si" data-slug="${esc(exam.slug)}" data-minutes="${exam.minutes}" data-pass="${exam.pass_percent}" data-modules="${esc(JSON.stringify(exam.modules))}">
+  <div class="lf-wrap">
+    ${crumbs([['/courses/', 'Courses'], [`/categories/${cat.slug}/`, cat.name], [`/courses/${course.slug}/`, course.title_en], [null, 'Expert exam']])}
+    <header class="lfx-head">
+      <p class="lf-eyebrow">Expert exam · විශේෂඥ විභාගය</p>
+      <h1>${esc(exam.title)}</h1>
+      <p class="sub">${esc(exam.subtitle)}</p>
+    </header>
+
+    <div class="lfx-start" id="lfx-start">
+      <h2>විභාගයට පෙර කියවන්න</h2>
+      <ul>
+        <li>ප්‍රශ්න <strong>${exam.questions.length}</strong> · කාලය <strong>විනාඩි ${exam.minutes}</strong> · සමත් වීමට <strong>${exam.pass_percent}% (${passCount}/${exam.questions.length})</strong>.</li>
+        <li>පාඨමාලාවේ මොඩියුල 9ම ආවරණය වේ — ගණනය කිරීම්, සම්මත කේත, ක්‍රියාවලි පිළිවෙළ ඇතුළුව. විශේෂඥ මට්ටමේ දැනුමක් අවශ්‍යයි.</li>
+        <li>"නිවැරදි සියල්ල තෝරන්න", ගැලපීම් සහ පිළිවෙළ ප්‍රශ්න <strong>සම්පූර්ණයෙන් නිවැරදි විට පමණක්</strong> ලකුණු ලැබේ — අර්ධ ලකුණු නැත.</li>
+        <li>අවසානයේ ලකුණු, මොඩියුල අනුව බිඳවැටීම සහ වැරදුණු ප්‍රශ්න අංක පමණක් පෙන්වයි. <strong>නිවැරදි පිළිතුරු පෙන්වන්නේ නැත.</strong></li>
+        <li>කාලය අවසන් වූ විට ස්වයංක්‍රීයව ඉදිරිපත් වේ. පිටුව නැවත load කළත් කාලය සහ පිළිතුරු මේ බ්‍රව්සරයේ රැඳේ.</li>
+      </ul>
+      <div class="lfx-types">
+        <span class="lf-chip">එක් පිළිතුරක් ${counts.single || 0}</span>
+        <span class="lf-chip">බහු තේරීම ${counts.multi || 0}</span>
+        <span class="lf-chip">ගණනය ${counts.numeric || 0}</span>
+        <span class="lf-chip">ගැලපීම ${counts.match || 0}</span>
+        <span class="lf-chip">පිළිවෙළ ${counts.order || 0}</span>
+      </div>
+      <p id="lfx-best"></p>
+      <button type="button" class="lf-btn lf-btn--yellow" id="lfx-begin">විභාගය අරඹන්න — කාලය ගණන් වීම පටන් ගනී</button>
+    </div>
+
+    <div class="lfx-bar" id="lfx-bar" hidden>
+      <span class="lbl">ඉතිරි කාලය</span><span class="t" id="lfx-timer">${String(exam.minutes).padStart(2, '0')}:00</span>
+      <span class="c" id="lfx-count">පිළිතුරු දුන් 0 / ${exam.questions.length}</span>
+      <button type="button" class="lf-btn lf-btn--green lf-btn--sm" id="lfx-submit">ඉදිරිපත් කරන්න</button>
+    </div>
+
+    <div class="lfx-result" id="lfx-result" hidden></div>
+
+    <form class="lfx-paper" id="lfx-paper" hidden novalidate autocomplete="off">
+      ${exam.questions.map((q, i) => examQuestion(q, i + 1)).join('\n')}
+      <div class="lfx-foot">
+        <p>ඉදිරිපත් කිරීමට පෙර සියලු ප්‍රශ්නවලට පිළිතුරු දී ඇත්දැයි ඉහළ තීරුවේ ගණන බලන්න.</p>
+        <button type="button" class="lf-btn lf-btn--green" id="lfx-submit2">විභාගය ඉදිරිපත් කරන්න</button>
+      </div>
+    </form>
+  </div>
+  <script type="application/json" id="lfx-data">${JSON.stringify(data).replace(/</g, '\\u003c')}</script>
+</section>
+<script src="/assets/exam-runtime.js" defer></script>`;
+  return layout({
+    site, categories, path: `/courses/${course.slug}/exam/`,
+    title: `${exam.title} — ${site.name}`,
+    description: `Expert-level exam for ${course.title_en}: ${exam.questions.length} questions, ${exam.minutes} minutes, ${exam.pass_percent}% to pass. Score only — answers are not revealed.`,
+    body, bodyClass: 'lf-exam',
+    extraHead: `<link rel="stylesheet" href="/assets/exam.css">`,
   });
 }
 
