@@ -81,7 +81,6 @@
       "tagline": "Tourism, tuition, repair, freelancing",
       "description": "Service businesses that start with one person and a skill: homestays, tuition classes, repair shops and freelancing for clients abroad.",
       "planned": [
-        "Homestay and small tourism business",
         "Freelancing from Sri Lanka: clients, contracts, getting paid",
         "Tuition class to learning centre"
       ]
@@ -145,15 +144,60 @@
         "A glossary of 60+ industry terms and a library of 150+ verified links to institutes, labs, mills, standards and suppliers"
       ],
       "modules": [
-        { "n": 1, "si": "ඇඟලුම් කර්මාන්තය ක්‍රියාත්මක වන හැටි", "en": "How the apparel industry works", "hours": "1.5 h" },
-        { "n": 2, "si": "තන්තු සහ නූල්", "en": "Fibres and yarn", "hours": "1.5 h" },
-        { "n": 3, "si": "ගෙතුම් රෙදි", "en": "Knit fabrics", "hours": "2 h" },
-        { "n": 4, "si": "රෙදි සහ ඇඟලුම් පරීක්ෂාව", "en": "Fabric and garment testing", "hours": "2 h" },
-        { "n": 5, "si": "සැලසුම සහ ටෙක් පැක්", "en": "Design and the tech pack", "hours": "2 h" },
-        { "n": 6, "si": "මුද්‍රණය සහ අලංකරණය", "en": "Printing and decoration", "hours": "2 h" },
-        { "n": 7, "si": "නිෂ්පාදනය සහ තත්ත්ව පාලනය", "en": "Production and quality control", "hours": "2 h" },
-        { "n": 8, "si": "ශ්‍රී ලංකාවේ මිලදී ගැනීම", "en": "Sourcing in Sri Lanka", "hours": "1.5 h" },
-        { "n": 9, "si": "ප්‍රිමියම් බ්‍රෑන්ඩය ගොඩනැගීම", "en": "Building the premium brand", "hours": "1.5 h" }
+        {
+          "n": 1,
+          "si": "ඇඟලුම් කර්මාන්තය ක්‍රියාත්මක වන හැටි",
+          "en": "How the apparel industry works",
+          "hours": "1.5 h"
+        },
+        {
+          "n": 2,
+          "si": "තන්තු සහ නූල්",
+          "en": "Fibres and yarn",
+          "hours": "1.5 h"
+        },
+        {
+          "n": 3,
+          "si": "ගෙතුම් රෙදි",
+          "en": "Knit fabrics",
+          "hours": "2 h"
+        },
+        {
+          "n": 4,
+          "si": "රෙදි සහ ඇඟලුම් පරීක්ෂාව",
+          "en": "Fabric and garment testing",
+          "hours": "2 h"
+        },
+        {
+          "n": 5,
+          "si": "සැලසුම සහ ටෙක් පැක්",
+          "en": "Design and the tech pack",
+          "hours": "2 h"
+        },
+        {
+          "n": 6,
+          "si": "මුද්‍රණය සහ අලංකරණය",
+          "en": "Printing and decoration",
+          "hours": "2 h"
+        },
+        {
+          "n": 7,
+          "si": "නිෂ්පාදනය සහ තත්ත්ව පාලනය",
+          "en": "Production and quality control",
+          "hours": "2 h"
+        },
+        {
+          "n": 8,
+          "si": "ශ්‍රී ලංකාවේ මිලදී ගැනීම",
+          "en": "Sourcing in Sri Lanka",
+          "hours": "1.5 h"
+        },
+        {
+          "n": 9,
+          "si": "ප්‍රිමියම් බ්‍රෑන්ඩය ගොඩනැගීම",
+          "en": "Building the premium brand",
+          "hours": "1.5 h"
+        }
       ],
       "extras": [
         "අවසන් විභාගය — Final exam (15 questions)",
@@ -164,6 +208,119 @@
       "exam": "content/courses/knit-tshirt-brand/exam.json",
       "content": {
         "html": "content/courses/knit-tshirt-brand/content.html",
+        "css": "/assets/course.css",
+        "runtime": "/assets/course-runtime.js",
+        "fonts": "Noto+Serif+Sinhala:wght@600;700&family=IBM+Plex+Mono:wght@400;500"
+      },
+      "updated": "2026-09-21"
+    },
+    {
+      "slug": "tourism-business-sri-lanka",
+      "status": "available",
+      "title_si": "ගමනෙන් ව්‍යාපාරයට",
+      "title_en": "From Journey to Business",
+      "subtitle_en": "Tour guiding, homestays, experiences, itineraries, pricing, bookings and operations in Sri Lanka",
+      "category": "services-digital",
+      "language": "Sinhala, with tourism and digital terms in English",
+      "level": "Beginner — no degree or prior tourism experience needed",
+      "hours": "10–12 hours",
+      "modules_count": 9,
+      "quiz_count": 10,
+      "question_count": 60,
+      "price": "Free",
+      "summary": "A Sinhala-first, practical course for someone who wants to start a small tourism business in Sri Lanka. It covers choosing a customer segment, designing local experiences, guiding and storytelling, homestay operations, itineraries and suppliers, pricing and commissions, online bookings and reviews, safety and service recovery, current registration paths, and a 90-day launch plan.",
+      "why": "Tourism businesses are often started with a vehicle, a spare room or local knowledge, but long-term reviews and profit come from repeatable operations. This course turns informal know-how into a simple system: a clear offer, accurate expectations, supplier confirmations, costing, safety checks, records and a feedback loop.",
+      "outcomes": [
+        "Choose a specific tourism customer segment and write a clear value proposition",
+        "Design a half-day, full-day or small-stay experience with realistic timing, inclusions and a Plan B",
+        "Guide and tell stories without information overload or invented facts",
+        "Run a basic homestay room-ready, check-in and cleaning SOP",
+        "Build itineraries and a supplier network with written confirmations and backups",
+        "Price direct and commission-channel bookings without accidentally deleting the margin",
+        "Turn inquiries into bookings, collect genuine reviews and track profit by channel",
+        "Identify the current SLTDA registration path and execute a 90-day launch plan"
+      ],
+      "audience": [
+        "Sri Lankans who want to start a tour, local experience, homestay or trip-planning business",
+        "Drivers, guides and hosts who already help travellers informally and want a more professional system",
+        "Small accommodation and service businesses that want better bookings, reviews and operations"
+      ],
+      "requirements": [
+        "Reads Sinhala; basic English helps with tourism terms and foreign-guest communication",
+        "A smartphone and access to Google Maps/WhatsApp or equivalent tools",
+        "Time to do field exercises: test a route, talk to suppliers and run at least one dry run"
+      ],
+      "includes": [
+        "9 practical modules with Sri Lankan examples and field exercises",
+        "10 self-marking quizzes — 60 questions — with explanations",
+        "A 15-question final exam",
+        "8 copy-paste templates and operational checklists",
+        "A tourism glossary and official-source resource library for registration, visa, tax and training checks"
+      ],
+      "modules": [
+        {
+          "n": 1,
+          "si": "ශ්‍රී ලංකාවේ සංචාරක ව්‍යාපාරය තේරුම් ගැනීම",
+          "en": "Understanding the tourism business",
+          "hours": "1 h"
+        },
+        {
+          "n": 2,
+          "si": "විකුණන්න පුළුවන් සංචාරක අත්දැකීමක් සැලසුම් කිරීම",
+          "en": "Designing a sellable experience",
+          "hours": "1.25 h"
+        },
+        {
+          "n": 3,
+          "si": "Guiding, storytelling සහ සංස්කෘතික ගෞරවය",
+          "en": "Guiding, storytelling and cultural respect",
+          "hours": "1.25 h"
+        },
+        {
+          "n": 4,
+          "si": "Homestay සහ කුඩා නවාතැන් මෙහෙයුම්",
+          "en": "Homestay and small-stay operations",
+          "hours": "1.25 h"
+        },
+        {
+          "n": 5,
+          "si": "Itinerary, transport සහ supplier network",
+          "en": "Itineraries, transport and supplier network",
+          "hours": "1.25 h"
+        },
+        {
+          "n": 6,
+          "si": "මිල, පිරිවැය, commission සහ ලාභය",
+          "en": "Pricing, costing, commissions and profit",
+          "hours": "1.25 h"
+        },
+        {
+          "n": 7,
+          "si": "Bookings, online presence සහ reviews",
+          "en": "Bookings, online presence and reviews",
+          "hours": "1.25 h"
+        },
+        {
+          "n": 8,
+          "si": "Operations, safety, complaints සහ sustainability",
+          "en": "Operations, safety, complaints and sustainability",
+          "hours": "1.25 h"
+        },
+        {
+          "n": 9,
+          "si": "ලියාපදිංචිය, නීතිමය මූලික කරුණු සහ 90-දින launch plan",
+          "en": "Registration, compliance and a 90-day launch",
+          "hours": "1.5 h"
+        }
+      ],
+      "extras": [
+        "අවසන් විභාගය — Final exam (15 questions)",
+        "පාරිභාෂික වචන මාලාව — Tourism glossary",
+        "Templates සහ checklists — Booking, costing, supplier, room, incident and review tools",
+        "සම්පත් පුස්තකාලය — Official Sri Lankan tourism and business links"
+      ],
+      "content": {
+        "html": "content/courses/tourism-business-sri-lanka/content.html",
         "css": "/assets/course.css",
         "runtime": "/assets/course-runtime.js",
         "fonts": "Noto+Serif+Sinhala:wght@600;700&family=IBM+Plex+Mono:wght@400;500"
